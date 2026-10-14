@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dkpsriq327raf"]
+
+[ext_resource type="Script" uid="uid://de7181nlxr48f" path="res://Scripts/project_bar.gd" id="1_3ledc"]
+
+[node name="Project" type="Panel" unique_id=1078774804]
+custom_minimum_size = Vector2(0, 80)
+script = ExtResource("1_3ledc")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=480205663]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=712030630]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProjectName" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=152096456]
+layout_mode = 2
+size_flags_vertical = 10
+text = "Project Name"
+
+[node name="ProjectDesc" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=2096059357]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(0.59717613, 0.59717613, 0.5971761, 1)
+theme_override_font_sizes/font_size = 10
+text = "Project Name"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=299550500]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="Open" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=2050642257]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 8
+text = "Open Project"
+
+[node name="Rename" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1427840914]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 8
+text = "Rename Project"
+
+[node name="Delete" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1232440484]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 8
+text = "Delete Project"

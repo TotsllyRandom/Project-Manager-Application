@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dr486lij6hbtc"]
 
 [ext_resource type="Script" uid="uid://bdo0eeoj2uiik" path="res://Scripts/main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://dkpsriq327raf" path="res://ProjectBar.tscn" id="2_0xm2m"]
 
 [node name="Main" type="Control" unique_id=1509938219]
 layout_mode = 3
@@ -10,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ig7tw")
+project_bar = ExtResource("2_0xm2m")
 
 [node name="BG" type="Panel" parent="." unique_id=608480732]
 layout_mode = 1
@@ -32,6 +34,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ProjectList" type="Control" parent="BG/Usable Area" unique_id=1889657677]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,32 +50,68 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BG/Usable Area/ProjectList/HBoxContainer" unique_id=788755575]
+[node name="Projects" type="VBoxContainer" parent="BG/Usable Area/ProjectList/HBoxContainer" unique_id=788755575]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LineEdit" type="LineEdit" parent="BG/Usable Area/ProjectList/HBoxContainer/VBoxContainer" unique_id=1086450956]
-layout_mode = 2
-size_flags_vertical = 10
-placeholder_text = "Enter Project Name Here"
-alignment = 1
-
-[node name="Button" type="Button" parent="BG/Usable Area/ProjectList/HBoxContainer/VBoxContainer" unique_id=1492063803]
-layout_mode = 2
-size_flags_vertical = 10
-text = "Create!"
-
 [node name="NewProject" type="VBoxContainer" parent="BG/Usable Area/ProjectList/HBoxContainer" unique_id=2023184980]
+custom_minimum_size = Vector2(230, 100)
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="LineEdit" type="LineEdit" parent="BG/Usable Area/ProjectList/HBoxContainer/NewProject" unique_id=513482690]
+[node name="Label" type="Label" parent="BG/Usable Area/ProjectList/HBoxContainer/NewProject" unique_id=732349984]
 layout_mode = 2
-size_flags_vertical = 10
+text = "New Project"
+horizontal_alignment = 1
+
+[node name="Name" type="LineEdit" parent="BG/Usable Area/ProjectList/HBoxContainer/NewProject" unique_id=513482690]
+layout_mode = 2
+size_flags_vertical = 0
 placeholder_text = "Enter Project Name Here"
 alignment = 1
 
-[node name="Button" type="Button" parent="BG/Usable Area/ProjectList/HBoxContainer/NewProject" unique_id=391975675]
+[node name="Description" type="TextEdit" parent="BG/Usable Area/ProjectList/HBoxContainer/NewProject" unique_id=210560638]
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "Enter a short description to remind yourself of what you're working towards!"
+wrap_mode = 1
+autowrap_mode = 2
+
+[node name="Create" type="Button" parent="BG/Usable Area/ProjectList/HBoxContainer/NewProject" unique_id=391975675]
 layout_mode = 2
 size_flags_vertical = 10
 text = "Create!"
+
+[node name="CurrentProject" type="Control" parent="BG/Usable Area" unique_id=654311185]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BG/Usable Area/CurrentProject" unique_id=828091703]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="BG/Usable Area/CurrentProject/HBoxContainer" unique_id=1082634250]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BG/Usable Area/CurrentProject/HBoxContainer/Panel" unique_id=985004035]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Visual" type="Control" parent="BG/Usable Area/CurrentProject/HBoxContainer" unique_id=337983348]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="BG/Usable Area/ProjectList/HBoxContainer/NewProject/Create" to="." method="_on_create_pressed"]
